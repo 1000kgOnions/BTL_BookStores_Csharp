@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BTL_LaptrinhWeb_BanSach.Models.giohang>
+
+@{
+    ViewBag.Title = "ListCart";
+    Layout = "~/Areas/Admin/Views/_AdminLayout.cshtml";
+}
+
+<center><h2>@ViewBag.pingCart</h2></center>
+
+<p>
+    @Html.ActionLink("Thêm mới", "CreateC")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Mã giỏ hàng
+        </th>
+        <th>
+            Tài khoản
+        </th>
+        <th>
+            Ngày mua
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaGiohang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenDN)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ngaymua)
+    </td>
+
+    <td>
+        <center>
+            @Html.ActionLink("Xem chi tiết", "ViewDetailCart", new { id = item.MaGiohang })
+            </center>
+    </td>
+</tr>
+}
+
+</table>

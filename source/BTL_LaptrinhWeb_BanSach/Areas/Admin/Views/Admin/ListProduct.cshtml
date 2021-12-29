@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BTL_LaptrinhWeb_BanSach.Models.sach>
+
+@{
+    ViewBag.Title = "ListProduct";
+    Layout = "~/Areas/Admin/Views/_AdminLayout.cshtml";
+}
+
+<Center><h2>Bảng Sách</h2></Center>
+
+<p>
+    @Html.ActionLink("Thêm sách mới", "CreateP")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã sách
+        </th>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Đơn giá
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Donvitinh)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.Mota)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.Hinhminhhoa)
+        </th>*@
+        <th>
+            Ngày cập nhật
+        </th>
+        <th>
+            Số lượng bán
+        </th>
+        <th>
+            Số lần xem
+        </th>
+        <th>
+            Tác giả
+        </th>
+        <th>
+            Chủ đề
+        </th>
+        <th>
+            Nhà xuất bản
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Masach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tensach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Dongia)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Donvitinh)
+        </td>*@
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Mota)
+        </td>*@
+    @*<td>
+            <img src="@item.Hinhminhhoa" width="100px" alt="" />
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Soluongban)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Solanxem)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tentacgia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.chude.Tenchude)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nhaxuatban.TenNXB)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "EditP", new { Masach = item.Masach }) <br />
+        @*@Html.ActionLink("Details", "Details", new { id=item.Masach }) |*@
+        @Html.ActionLink("Xóa", "DeleteP", new { Masach = item.Masach })
+    </td>
+</tr>
+}
+
+</table>

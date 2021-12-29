@@ -1,0 +1,4 @@
+﻿@model List<BTL_LaptrinhWeb_BanSach.Models.CartItem>
+
+<div class="line-text"><span>Giỏ hàng của bạn</span></div>
+<div style="border: 3px solid darkgoldenrod; border-radius: 10px; text-align: center; padding: 10px; margin: 0 10px 0 10px; background-color: #dada5d;"><i class="fas fa-shopping-cart"></i>&nbsp;<a style="color:darkred" href="@Url.Action("Index","Cart")" class="cart-ico"><strong>@Model.Count sản phẩm</strong></a></div>

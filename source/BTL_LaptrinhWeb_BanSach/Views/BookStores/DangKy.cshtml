@@ -1,0 +1,147 @@
+﻿
+@model BTL_LaptrinhWeb_BanSach.Models.DangKy
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/_BookStores_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @*ở input phải có id="" ,name="" type="" value =""*@
+    <div class="titleProduct">
+        <h2> <i class="fas fa-registered"></i> Đăng Ký <i class="fas fa-registered"></i></h2>
+    </div>
+    <div class="contact">
+        <form action="javascript:void(0)" class="contact-form" autocomplete="off">
+            <div class="contact-form-group">
+                <label for="TenDN" class="contact-form-label">Tên tài khoản</label>
+                <input id="TenDN" name="TenDN" type="text" class="contact-form-input" value="" />
+                @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+            </div>
+            <div class="contact-form-group">
+                <label for="Matkhau" class="contact-form-label">Mật khẩu</label>
+                <input id="Matkhau" name="Matkhau" type="password" class="contact-form-input" value="" />
+                @Html.ValidationMessageFor(model => model.Matkhau, "", new { @class = "text-danger" })
+            </div>
+            <div class="contact-form-group">
+                <label for="HotenKH" class="contact-form-label">Họ tên</label>
+                <input id="HotenKH" name="HotenKH" type="text" class="contact-form-input" value="" />
+            </div>
+            <div class="contact-form-group">
+                <label for="DiachiKH" class="contact-form-label">Địa chỉ</label>
+                <input id="DiachiKH" name="DiachiKH" type="text" class="contact-form-input" value="" />
+            </div>
+            <div class="contact-form-group">
+                <label for="DienthoaiKH" class="contact-form-label">Số điện thoại</label>
+                <input id="DienthoaiKH" name="DienthoaiKH" type="text" class="contact-form-input" value="" />
+                @Html.ValidationMessageFor(model => model.DienthoaiKH, "", new { @class = "text-danger" })
+            </div>
+            <div class="contact-form-group">
+                <label for="NgaySinh" class="contact-form-label">Ngày sinh</label>
+                <input id="NgaySinh" name="NgaySinh" type="datetime" class="contact-form-input" value="" />
+            </div>
+            <div class="contact-form-group">
+                <label for="Gioitinh" class="contact-form-label">Giới tính</label>
+                <input id="Gioitinh" name="Gioitinh" type="text" class="contact-form-input" value="" />
+                @Html.ValidationMessageFor(model => model.Gioitinh, "", new { @class = "text-danger" })
+            </div>
+            <div class="contact-form-group">
+                <label for="Email" class="contact-form-label">Email</label>
+                <input id="Email" name="Email" type="datetime" class="contact-form-input" value="" />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            &nbsp;
+            <input type="submit" value="Xác nhận" class="contact-form-submit" />
+        </form>
+    </div>
+}
+<style>
+    .contact {
+        max-width: 30%;
+        margin: auto;
+    }
+
+    .contact-heading {
+        color: #4d49ba;
+        font-weight: bold;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-notice {
+        font-weight: 300;
+        line-height: 1.6;
+        color: #7e95cc;
+        margin-bottom: 3rem;
+    }
+
+    .contact-form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-form-label {
+        color: #983b0e;
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .contact-form-input,
+    .contact-form-area {
+        color: #020623;
+        display: block;
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #c78007;
+        border: 0;
+        outline: none;
+        resize: none;
+    }
+
+        .contact-form-input::-webkit-input-placeholder,
+        .contact-form-area::-webkit-input-placeholder {
+            color: #b2bada;
+        }
+
+    .contact-form-input {
+        border-radius: 5rem;
+    }
+
+    .contact-form-area {
+        min-height: 16rem;
+        border-radius: 2rem;
+        line-height: 1.6;
+    }
+
+    .contact-form-submit {
+        color: white;
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 25rem;
+        border-radius: 5rem;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        font-weight: 500;
+        white-space: nowrap;
+        letter-spacing: 1px;
+        background-color: #a06e2c;
+        box-shadow: 0 10px 20px 0 rgba(123, 120, 248, 0.5);
+    }
+
+    .contact-form-area::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .contact-form-area::-webkit-scrollbar-track {
+        border-radius: 3rem;
+        background-color: #eee;
+    }
+
+    .contact-form-area::-webkit-scrollbar-thumb {
+        border-radius: 3rem;
+        background-color: #7b78f8;
+    }
+</style>

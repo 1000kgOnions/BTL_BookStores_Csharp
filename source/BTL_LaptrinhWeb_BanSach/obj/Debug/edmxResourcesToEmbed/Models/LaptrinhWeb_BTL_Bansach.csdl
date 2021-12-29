@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LaptrinhWeb_BTL_BansachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="chitietgiohang">
+    <Key>
+      <PropertyRef Name="MaGiohang" />
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="MaGiohang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Masach" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Dongia" Type="Double" />
+    <NavigationProperty Name="giohang" Relationship="Self.FK__chitietgi__MaGio__4E88ABD4" FromRole="chitietgiohang" ToRole="giohang" />
+    <NavigationProperty Name="sach" Relationship="Self.FK__chitietgi__Masac__4F7CD00D" FromRole="chitietgiohang" ToRole="sach" />
+    <Property Name="Soluong" Type="Int32" />
+  </EntityType>
+  <EntityType Name="chude">
+    <Key>
+      <PropertyRef Name="MaCD" />
+    </Key>
+    <Property Name="MaCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tenchude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="saches" Relationship="Self.FK__sach__MaCD__4AB81AF0" FromRole="chude" ToRole="sach" />
+  </EntityType>
+  <EntityType Name="giohang">
+    <Key>
+      <PropertyRef Name="MaGiohang" />
+    </Key>
+    <Property Name="MaGiohang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaymua" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="chitietgiohangs" Relationship="Self.FK__chitietgi__MaGio__4E88ABD4" FromRole="giohang" ToRole="chitietgiohang" />
+    <NavigationProperty Name="khachhang" Relationship="Self.FK__giohang__TenDN__4222D4EF" FromRole="giohang" ToRole="khachhang" />
+  </EntityType>
+  <EntityType Name="khachhang">
+    <Key>
+      <PropertyRef Name="TenDN" />
+    </Key>
+    <Property Name="TenDN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HotenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiachiKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DienthoaiKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ngaysinh" Type="DateTime" Precision="0" />
+    <Property Name="Gioitinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quyen" Type="Int32" />
+    <NavigationProperty Name="giohangs" Relationship="Self.FK__giohang__TenDN__4222D4EF" FromRole="khachhang" ToRole="giohang" />
+  </EntityType>
+  <EntityType Name="nhaxuatban">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenNXB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="saches" Relationship="Self.FK__sach__MaNXB__4BAC3F29" FromRole="nhaxuatban" ToRole="sach" />
+  </EntityType>
+  <EntityType Name="sach">
+    <Key>
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="Masach" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tensach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Dongia" Type="Double" />
+    <Property Name="Donvitinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hinhminhhoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ngaycapnhat" Type="DateTime" Precision="0" />
+    <Property Name="Soluongban" Type="Int32" />
+    <Property Name="Solanxem" Type="Int32" />
+    <Property Name="tentacgia" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="MaCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaNXB" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="chitietgiohangs" Relationship="Self.FK__chitietgi__Masac__4F7CD00D" FromRole="sach" ToRole="chitietgiohang" />
+    <NavigationProperty Name="chude" Relationship="Self.FK__sach__MaCD__4AB81AF0" FromRole="sach" ToRole="chude" />
+    <NavigationProperty Name="nhaxuatban" Relationship="Self.FK__sach__MaNXB__4BAC3F29" FromRole="sach" ToRole="nhaxuatban" />
+  </EntityType>
+  <Association Name="FK__chitietgi__MaGio__4E88ABD4">
+    <End Role="giohang" Type="Self.giohang" Multiplicity="1" />
+    <End Role="chitietgiohang" Type="Self.chitietgiohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giohang">
+        <PropertyRef Name="MaGiohang" />
+      </Principal>
+      <Dependent Role="chitietgiohang">
+        <PropertyRef Name="MaGiohang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chitietgi__Masac__4F7CD00D">
+    <End Role="sach" Type="Self.sach" Multiplicity="1" />
+    <End Role="chitietgiohang" Type="Self.chitietgiohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sach">
+        <PropertyRef Name="Masach" />
+      </Principal>
+      <Dependent Role="chitietgiohang">
+        <PropertyRef Name="Masach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sach__MaCD__4AB81AF0">
+    <End Role="chude" Type="Self.chude" Multiplicity="0..1" />
+    <End Role="sach" Type="Self.sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chude">
+        <PropertyRef Name="MaCD" />
+      </Principal>
+      <Dependent Role="sach">
+        <PropertyRef Name="MaCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giohang__TenDN__4222D4EF">
+    <End Role="khachhang" Type="Self.khachhang" Multiplicity="0..1" />
+    <End Role="giohang" Type="Self.giohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khachhang">
+        <PropertyRef Name="TenDN" />
+      </Principal>
+      <Dependent Role="giohang">
+        <PropertyRef Name="TenDN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sach__MaNXB__4BAC3F29">
+    <End Role="nhaxuatban" Type="Self.nhaxuatban" Multiplicity="0..1" />
+    <End Role="sach" Type="Self.sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhaxuatban">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="sach">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LaptrinhWeb_BTL_BansachEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="chitietgiohangs" EntityType="Self.chitietgiohang" />
+    <EntitySet Name="chudes" EntityType="Self.chude" />
+    <EntitySet Name="giohangs" EntityType="Self.giohang" />
+    <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
+    <EntitySet Name="nhaxuatbans" EntityType="Self.nhaxuatban" />
+    <EntitySet Name="saches" EntityType="Self.sach" />
+    <AssociationSet Name="FK__chitietgi__MaGio__4E88ABD4" Association="Self.FK__chitietgi__MaGio__4E88ABD4">
+      <End Role="giohang" EntitySet="giohangs" />
+      <End Role="chitietgiohang" EntitySet="chitietgiohangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chitietgi__Masac__4F7CD00D" Association="Self.FK__chitietgi__Masac__4F7CD00D">
+      <End Role="sach" EntitySet="saches" />
+      <End Role="chitietgiohang" EntitySet="chitietgiohangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sach__MaCD__4AB81AF0" Association="Self.FK__sach__MaCD__4AB81AF0">
+      <End Role="chude" EntitySet="chudes" />
+      <End Role="sach" EntitySet="saches" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giohang__TenDN__4222D4EF" Association="Self.FK__giohang__TenDN__4222D4EF">
+      <End Role="khachhang" EntitySet="khachhangs" />
+      <End Role="giohang" EntitySet="giohangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sach__MaNXB__4BAC3F29" Association="Self.FK__sach__MaNXB__4BAC3F29">
+      <End Role="nhaxuatban" EntitySet="nhaxuatbans" />
+      <End Role="sach" EntitySet="saches" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

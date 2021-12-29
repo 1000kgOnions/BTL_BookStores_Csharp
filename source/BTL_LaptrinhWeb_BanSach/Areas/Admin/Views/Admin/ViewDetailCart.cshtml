@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BTL_LaptrinhWeb_BanSach.Models.chitietgiohang>
+
+@{
+    ViewBag.Title = "ViewDetailCart";
+    Layout = "~/Areas/Admin/Views/_AdminLayout.cshtml";
+}
+
+<h2>ViewDetailCart</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã giỏ hàng:
+        </th>
+        <th>
+            Mã sách:
+        </th>
+        <th>
+            Tên sách:
+        </th>
+        <th>
+            Giá:
+        </th>
+        <th>
+            Số lượng:
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaGiohang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Masach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sach.Tensach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Quay lại", "ListCart")
+</div>

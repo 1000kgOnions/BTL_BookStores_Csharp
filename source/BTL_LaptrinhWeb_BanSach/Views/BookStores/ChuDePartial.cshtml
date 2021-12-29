@@ -1,0 +1,8 @@
+﻿@using BTL_LaptrinhWeb_BanSach.Models;
+@*@model List<chude>*@
+
+@foreach (var item in Model)
+{
+    <li class="list-group-item"><a style="color:black" href="@Url.Action("SachtheoChude", "BookStores", new { @MaCD = item.MaCD })">@item.Tenchude</a></li>
+
+}

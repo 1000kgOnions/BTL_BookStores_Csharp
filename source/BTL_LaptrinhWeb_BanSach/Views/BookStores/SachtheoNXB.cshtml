@@ -1,0 +1,46 @@
+﻿@using BTL_LaptrinhWeb_BanSach.Models;
+@*@model List<sach>*@
+@using PagedList.Mvc;
+@model PagedList.IPagedList<sach>
+@{
+    ViewBag.Title = "SachtheoNXB";
+    Layout = "~/Views/_BookStores_Layout.cshtml";
+}
+<div class="titleProduct">
+    <h2> <i class="fas fa-book"></i> @ViewBag.TenNXB <i class="fas fa-book"></i></h2>
+</div>
+@{
+    int i = 0;
+    foreach (var item in Model)
+    {
+        i++;
+        <div class="SanPham">
+            @*<a href="@Url.Action("XemChiTiet","Home",new{@MaSP=item.MaSP})">*@
+            <div class="HinhAnh">
+                <img class="imgg" src=@Url.Content(item.Hinhminhhoa) />
+            </div>
+            <dl class="list1">
+                <dt>@item.Tensach</dt>
+                <dd class="last"><span>@item.Dongia đ</span>Giá:</dd>
+            </dl>
+            <div class="row">
+                <span><a class="btn" href="@Url.Action("AddItem","Cart",new { @productId=item.Masach,@quantity=1})" role="button" style="color:white;background-color:#a06e2c;">Chọn mua</a></span>
+                <span><a class="btn" href="@Url.Action("XemChiTiet","BookStores", new{ @Masach = item.Masach })" role="button" style="color:white;background-color:#a06e2c;">Chi Tiết</a></span>
+            </div>
+        </div>
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+}
+
+<div class="pagel">
+    Trang @(Model.PageCount<Model.PageNumber ? 0: Model.PageNumber)/@Model.PageCount
+    <div class="menuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("SachtheoNXB", new { MaNXB = ViewBag.MaNXB, page = page }))
+    </div>
+</div>
+
+
+

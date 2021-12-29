@@ -1,0 +1,45 @@
+﻿@model BTL_LaptrinhWeb_BanSach.Models.sach
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/_BookStores_Layout.cshtml";
+}
+@{
+    String str = @Html.DisplayFor(model => model.Hinhminhhoa).ToString();
+}
+<div class="container-fluid" style="margin-top:20px;">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="@Url.Content(@str)" style="width:100%;" />
+        </div>
+        <div class="col-lg-8">
+            <div class="row">
+                <h1 style="font-weight:600;">@Html.DisplayFor(model => model.Tensach)</h1>
+            </div>
+            <div class="row">
+                <span style="font-weight:400;font-size:20px;">Tác Giả: </span>
+                <span style="font-weight:600;font-size:20px;">@Html.DisplayFor(model => model.tentacgia)</span>
+            </div>
+            <div class="row">
+                <span style="font-weight:400;font-size:20px;">Thể loại: </span>
+                <span style="font-weight:600;font-size:20px;">@Html.DisplayFor(model => model.chude.Tenchude)</span>
+            </div>
+            <div class="row">
+                <span style="font-weight:400;font-size:20px;">NXB: </span>
+                <span style="font-weight:600;font-size:20px;">@Html.DisplayFor(model => model.nhaxuatban.TenNXB)</span>
+            </div>
+            <div class="row">
+                <span style="font-weight:400;font-size:20px;">Giá: </span>
+                <span style="font-weight:600;font-size:20px;color:red;">@Html.DisplayFor(model => model.Dongia) VNĐ / @Html.DisplayFor(model => model.Donvitinh)</span>
+            </div>
+            <div class="row" style="margin-top:20px;">                
+                <span><a class="btn" href="@Url.Action("AddItem","Cart",new { @productId=@Html.DisplayFor(model => model.Masach),@quantity=1})" role="button" style="color:white;background-color:#a06e2c;">Thêm vào giỏ hàng</a></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <h1 style="text-align:center">Mô tả</h1>
+        <p>@Html.DisplayFor(model => model.Mota)</p>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LaptrinhWeb_BTL_BansachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="chitietgiohang">
+    <Key>
+      <PropertyRef Name="MaGiohang" />
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="MaGiohang" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Masach" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Soluong" Type="int" />
+    <Property Name="Dongia" Type="float" />
+  </EntityType>
+  <EntityType Name="chude">
+    <Key>
+      <PropertyRef Name="MaCD" />
+    </Key>
+    <Property Name="MaCD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Tenchude" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="giohang">
+    <Key>
+      <PropertyRef Name="MaGiohang" />
+    </Key>
+    <Property Name="MaGiohang" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenDN" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngaymua" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="khachhang">
+    <Key>
+      <PropertyRef Name="TenDN" />
+    </Key>
+    <Property Name="TenDN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Matkhau" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HotenKH" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiachiKH" Type="nvarchar" MaxLength="50" />
+    <Property Name="DienthoaiKH" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ngaysinh" Type="smalldatetime" />
+    <Property Name="Gioitinh" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quyen" Type="int" />
+  </EntityType>
+  <EntityType Name="nhaxuatban">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenNXB" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sach">
+    <Key>
+      <PropertyRef Name="Masach" />
+    </Key>
+    <Property Name="Masach" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Tensach" Type="nvarchar" MaxLength="100" />
+    <Property Name="Dongia" Type="float" />
+    <Property Name="Donvitinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="Mota" Type="ntext" />
+    <Property Name="Hinhminhhoa" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ngaycapnhat" Type="smalldatetime" />
+    <Property Name="Soluongban" Type="int" />
+    <Property Name="Solanxem" Type="int" />
+    <Property Name="tentacgia" Type="nvarchar" MaxLength="80" />
+    <Property Name="MaCD" Type="varchar" MaxLength="10" />
+    <Property Name="MaNXB" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__chitietgi__MaGio__6754599E">
+    <End Role="giohang" Type="Self.giohang" Multiplicity="1" />
+    <End Role="chitietgiohang" Type="Self.chitietgiohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giohang">
+        <PropertyRef Name="MaGiohang" />
+      </Principal>
+      <Dependent Role="chitietgiohang">
+        <PropertyRef Name="MaGiohang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chitietgi__Masac__68487DD7">
+    <End Role="sach" Type="Self.sach" Multiplicity="1" />
+    <End Role="chitietgiohang" Type="Self.chitietgiohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sach">
+        <PropertyRef Name="Masach" />
+      </Principal>
+      <Dependent Role="chitietgiohang">
+        <PropertyRef Name="Masach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sach__MaCD__4AB81AF0">
+    <End Role="chude" Type="Self.chude" Multiplicity="0..1" />
+    <End Role="sach" Type="Self.sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chude">
+        <PropertyRef Name="MaCD" />
+      </Principal>
+      <Dependent Role="sach">
+        <PropertyRef Name="MaCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sach__MaNXB__4BAC3F29">
+    <End Role="nhaxuatban" Type="Self.nhaxuatban" Multiplicity="0..1" />
+    <End Role="sach" Type="Self.sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhaxuatban">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="sach">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LaptrinhWeb_BTL_BansachModelStoreContainer">
+    <EntitySet Name="chitietgiohang" EntityType="Self.chitietgiohang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chude" EntityType="Self.chude" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="giohang" EntityType="Self.giohang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="khachhang" EntityType="Self.khachhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nhaxuatban" EntityType="Self.nhaxuatban" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sach" EntityType="Self.sach" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__chitietgi__MaGio__6754599E" Association="Self.FK__chitietgi__MaGio__6754599E">
+      <End Role="giohang" EntitySet="giohang" />
+      <End Role="chitietgiohang" EntitySet="chitietgiohang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chitietgi__Masac__68487DD7" Association="Self.FK__chitietgi__Masac__68487DD7">
+      <End Role="sach" EntitySet="sach" />
+      <End Role="chitietgiohang" EntitySet="chitietgiohang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sach__MaCD__4AB81AF0" Association="Self.FK__sach__MaCD__4AB81AF0">
+      <End Role="chude" EntitySet="chude" />
+      <End Role="sach" EntitySet="sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sach__MaNXB__4BAC3F29" Association="Self.FK__sach__MaNXB__4BAC3F29">
+      <End Role="nhaxuatban" EntitySet="nhaxuatban" />
+      <End Role="sach" EntitySet="sach" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

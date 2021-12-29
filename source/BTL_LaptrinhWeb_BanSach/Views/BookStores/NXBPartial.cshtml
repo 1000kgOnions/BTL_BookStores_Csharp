@@ -1,0 +1,7 @@
+﻿@using BTL_LaptrinhWeb_BanSach.Models;
+    
+@foreach (var item in Model)
+{
+    <li class="list-group-item"><a style="color:black" href="@Url.Action("SachtheoNXB", "BookStores", new { @MaNXB = item.MaNXB })">@item.TenNXB</a></li>
+ 
+}

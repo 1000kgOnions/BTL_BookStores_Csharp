@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "IndexLogin";
+}
+@model BTL_LaptrinhWeb_BanSach.Areas.Admin.Data.LoginModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Areas/Admin/css/login.css" rel="stylesheet" />
+    <script src="~/Areas/Admin/js/login.js"></script>
+    <link href="~/Areas/Admin/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossOrigin="anonymous" />
+    <title>IndexLogin</title>
+</head>
+<body>
+    @using (Html.BeginForm("IndexLogin", "Login", FormMethod.Post, new { @class = "login-form" }))
+    {
+        @Html.AntiForgeryToken()
+        @*@Html.ValidationSummary(true, null, new { @class="alert alert-danger"})*@
+        <div style="margin:auto;">
+            <form class="login-form" autocomplete="off" action="#">
+                <input type="text" id="UserName" name="username" placeholder="UserName" />
+                <p style="color: indianred;">@ViewBag.ErrU</p>
+                <div class="input-icon">
+                    <input type="password" id="PassWord" name="password" placeholder="PassWord" />
+                    <i class="fa fa-eye show-password"></i>
+                </div>
+                <p style="color: indianred;">@ViewBag.ErrP</p>
+                <div style="display:flex;">
+
+                    @*</label>@Html.CheckBoxFor(m => m.RememberMe, false)*@
+                    <input class="input-checkbox100" id="RememberMe" type="checkbox" name="RememberMe" value="">
+                    <label class="forgot" style="display:block; margin-left: 10px; margin-top: 5px;" for="RememberMe"> Remember me </label>
+                </div>
+                <br />
+                <button type="submit">Sign in</button>
+                <a href="@Url.Action("Index", "BookStores", new { area = "" })" class="forgot" style="margin-top:20px">Quay lại trang chủ?</a>
+                <a href="@Url.Action("DangKy", "BookStores", new { area = "" })" class="forgot" >Chưa có tài khoản? Đăng ký ngay</a>
+            </form>
+        </div>
+    }
+</body>
+</html>

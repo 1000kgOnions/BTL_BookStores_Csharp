@@ -1,0 +1,6 @@
+D:\Nam 3 ky 2\lap trinh web\BaiTapLon\source\Model\bin\Debug\Model.dll
+D:\Nam 3 ky 2\lap trinh web\BaiTapLon\source\Model\bin\Debug\Model.pdb
+D:\Nam 3 ky 2\lap trinh web\BaiTapLon\source\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\Nam 3 ky 2\lap trinh web\BaiTapLon\source\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\Nam 3 ky 2\lap trinh web\BaiTapLon\source\Model\obj\Debug\Model.dll
+D:\Nam 3 ky 2\lap trinh web\BaiTapLon\source\Model\obj\Debug\Model.pdb

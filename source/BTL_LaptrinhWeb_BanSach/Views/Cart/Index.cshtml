@@ -1,0 +1,56 @@
+﻿@model List<BTL_LaptrinhWeb_BanSach.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_BookStores_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="~/Areas/Admin/js/cart.js"></script>
+}
+<div class="content">
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Mã sách</td>
+                        <td>Tên sách</td>
+                        <td>Bìa sách</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Product.Masach</td>
+                            <td>@item.Product.Tensach</td>
+                            <td><img src="@Url.Content(item.Product.Hinhminhhoa)" width="100" /></td>
+                            <td><input type="text" class="txtQuantity" data-id="@item.Product.Masach" value="@item.Quantity" /></td>
+                            <td>@(item.Product.Dongia.GetValueOrDefault(0).ToString("N0"))đ</td>
+                            <td>@((item.Product.Dongia.GetValueOrDefault(0) * item.Quantity).ToString("N0"))đ</td>
+                            <td><a href="#" data-id="@item.Product.Masach" class="btn-delete">Xoá</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            <button id="btnContinue" style="background-color:wheat;" class="btn">Tiếp tục mua hàng</button>
+            <button id="btnUpdate" style="background-color:wheat;" class="btn">Cập nhật giỏ hàng</button>
+            <button id="btnDeleteAll" style="background-color:wheat;" class="btn">Xoá giỏ hàng</button>
+            <button id="btnPayment" style="background-color:wheat;" class="btn">Thanh toán</button>
+        }
+        else
+        {
+            <h3 style="margin: 3% 10% 10% 20%;"><span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span></h3>
+        }
+
+    </div>
+</div>
+
+

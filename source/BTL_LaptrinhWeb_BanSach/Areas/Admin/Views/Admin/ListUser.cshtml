@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BTL_LaptrinhWeb_BanSach.Models.khachhang>
+
+@{
+    ViewBag.Title = "ListUser";
+    Layout = "~/Areas/Admin/Views/_AdminLayout.cshtml";
+}
+
+<center><h2>Bảng Khách Hàng</h2></center>
+
+<p>
+    @Html.ActionLink("Thêm khách hàng", "CreateU")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tài khoản
+        </th>
+        <th>
+            Mật khẩu
+        </th>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th>
+            Giới tính
+        </th>
+        <th>
+            Email
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Quyen)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            @if (item.Quyen.ToString() == "1")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDN)
+                    <strong style="color:darkred">(Admin)</strong>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDN)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Matkhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HotenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienthoaiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gioitinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Quyen)
+                </td>*@
+            <td>
+                @Html.ActionLink("Sửa", "EditU", new { TenDN = item.TenDN }) <br />
+                @*@Html.ActionLink("Details", "Details", new { id=item.TenDN }) |*@
+                @Html.ActionLink("Xóa", "DeleteU", new { TenDN = item.TenDN })
+            </td>
+        </tr>
+    }
+
+</table>
